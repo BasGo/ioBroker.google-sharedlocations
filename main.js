@@ -531,8 +531,11 @@ function getSharedLocations(callback) {
 
         if(callback) callback(true);
       } else {
+
         // parse and save user locations
         var locationdata = JSON.parse(body.split('\n').slice(1, -1).join(''));
+
+        adapter.log.debug('Received location data: ' + JSON.stringify(locationdata));
 
         parseLocationData(locationdata, function(err, userobjarr) {
           if(err) {
